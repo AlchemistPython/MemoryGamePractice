@@ -8,7 +8,7 @@ const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('#result')// donde muestro resultado
 // Funcion donde creare el tablero con las respectivas tarjetas
 function createBoard(){
-    for(let i=0; i < cardNames.length; i++){
+    for(let i=0; i < cardNames.length*2; i++){
         // creo la tarjeta
         let card = document.createElement('img');
         // configuro todas las tarjetas con los sig atributos
