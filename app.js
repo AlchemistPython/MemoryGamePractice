@@ -13,7 +13,7 @@ let winnerCardsId = [];
 let resultDisplay = document.querySelector("#result");
 // creating the board
 function createBoard(){
-    for(let i = 0; i < 18; i++){
+    for(let i = 0; i < 12; i++){
         let card = document.createElement('img');
         card.src = `images/${emptyCards[0]}.png`;
         card.setAttribute(`class`,'animation');
