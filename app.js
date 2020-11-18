@@ -10,7 +10,7 @@ let selectCards = [];
 let selectCardsId = [];
 // creating the board
 function createBoard(){
-    for(let i = 0; i < 12; i++){
+    for(let i = 0; i < 18; i++){
         let card = document.createElement('img');
         card.src = `images/${emptyCards[0]}.png`;
         card.setAttribute(`class`,'animation');
@@ -62,19 +62,24 @@ function Match(){
     selectCards = [];
     selectCardsId = [];
 }
+// function where i check if the user click the same card
 function CheckRepeat(array){
-    // i put an absurd number because the logic id are 0 to 12 or more
-    let aux = 2000;
     let cont = 0;
-    for(let a of array){
-        if(a === aux){
-            cont++;
+    let repeated = false;
+    for(a of array){
+        for(b of array){
+            // the same id its gonna count 1 time
+            if(a === b){
+                cont++;
+                // and thats why its this condition
+                if(cont > 1){
+                    repeated = true;
+                    break;
+                }
+            }
         }
-        aux = a;
+        // here reset the cont if the same value dont found more like him
+        cont = 0;
     }
-    if(cont >= 1)
-        return true;
-    else
-        return false;
-    
+    return repeated;
 }
