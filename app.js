@@ -1,23 +1,76 @@
-// declaro los nombres para llamar despues
-const emptyCards = ['blank','white'];
-const cardNames = ['cheeseburger','fries','hotdog','ice-cream','milkshake','pizza']
-// Repito dos veces el arreglo
-let cardArray = cardNames.concat(cardNames);// aun no se lo agrego
-// donde estará el tablero
-const grid = document.querySelector('.grid')
-const resultDisplay = document.querySelector('#result')// donde muestro resultado
-// Funcion donde creare el tablero con las respectivas tarjetas
-function createBoard(){
-    for(let i=0; i < cardNames.length; i++){
-        // creo la tarjeta
-        let card = document.createElement('img');
-        // configuro todas las tarjetas con los sig atributos
-        card.src = `images/${emptyCards[0]}.png`;
-        card.setAttribute('class','animation');
-        card.id = `card-${i}`;
-        grid.appendChild(card);
+// class card for put properties
+class Card{
+    constructor(name){
+        // i receive the name of the card
+        this.name = name;
+        // if the card is front or back
+        this.flip = false;
+        // ubication
+        this.path = 'images/';
+        // format
+        this.format = 'png';
+    }
+    get getLocalitation(){
+        return `${this.path + this.name + this.format}`;
+    }
+    get getName(){
+        return this.name;
+    }
+    get getFlip(){
+        return this.flip;
+    }
+    /**
+     * @param {boolean} newFlip
+     */
+    set setFlip(newFlip){
+        this.flip = newFlip;
+    }
+    get getFace(){
+        if(this.flip === false){
+            return `${this.path}blank.png`;
+        }else{
+            return `${this.name}.png`;
+        }
     }
 }
+// Selecting the grid where its gonna be all cards
+const grid = document.querySelector('.grid');
+// array with the name of all cards
+const namesForCards = ['cheeseburger','fries','ice-cream','hotdog','milkshake','pizza'];
+// empty arrays
+const newDeck = new Array();
+// counter
+let counter = 0;
+// the lenght of the name cards and the deck size 
+const totalNames = namesForCards.length;
+const deckSize = totalNames*2;
+// functions
+function createBoard()
+{
+    for(let n = 0; n < deckSize; n++)
+    {
+        const cards = document.createElement('img');
+        NewDeck();
+        cards.setAttribute('src',`${newDeck[n].getFace}`);
+        cards.setAttribute('id',`cardId-${n}`);
+        cards.setAttribute('class','animation');
+        cards.setAttribute('alt',`cardFood-${n}`);
+        grid.appendChild(cards);
+    }
+}
+function NewDeck()
+{
+    while(counter < deckSize/totalNames)
+    {
+        ++counter;
+        for(let a of namesForCards)
+        {
+            const newCard = new Card(a)
+            newDeck.push(newCard);
+        }
 
-// llamamos a la función
+    }
+    newDeck.sort(()=>.5 - Math.random());
+}
+// calling the function
 createBoard();
