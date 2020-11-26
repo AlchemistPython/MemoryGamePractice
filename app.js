@@ -72,5 +72,10 @@ function NewDeck()
     }
     newDeck.sort(()=>.5 - Math.random());
 }
+// function flipCard()
+// {
+//     let getId = 
+// }
 // calling the function
 createBoard();
+// newDeck.forEach((e)=>console.log(e));
