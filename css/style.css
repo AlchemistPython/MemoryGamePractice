@@ -1,1 +1,39 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.animation {
+  -webkit-animation-name: flipLetter;
+          animation-name: flipLetter;
+  -webkit-transform-origin: center left;
+          transform-origin: center left;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+@-webkit-keyframes flipLetter {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes flipLetter {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+/*# sourceMappingURL=style.css.map */
