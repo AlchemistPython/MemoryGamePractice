@@ -10,9 +10,6 @@ class Card{
         // format
         this.format = 'png';
     }
-    get getLocalitation(){
-        return `${this.path + this.name + this.format}`;
-    }
     get getName(){
         return this.name;
     }
